@@ -1,0 +1,15 @@
+PODS:
+  - MarqueeLabel/Swift (3.1.3)
+  - SnapKit (4.0.0)
+
+DEPENDENCIES:
+  - MarqueeLabel/Swift
+  - SnapKit
+
+SPEC CHECKSUMS:
+  MarqueeLabel: baa5753dcbd36dca080e1f5c589a665aa5c906f1
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+
+PODFILE CHECKSUM: 1b3959551bc678fb01fea2abc005c6e8a68fd66c
+
+COCOAPODS: 1.2.0
