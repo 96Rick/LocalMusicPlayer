@@ -55,12 +55,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(finishedPlaying), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
     }
-    
-    @objc func finishedPlaying(notification: Notification) {
-        print("finish")
-        nextButtonDidTauch()
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         musicNames = [ "Lorde", "Ella Vos - Rearrange", "Pray to God", "Attention", "Ed Sheeran - Runaway", "Maroon 5 - It Was Always You"]
@@ -74,9 +69,10 @@ class ViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    
+    //MARK: - setupUI
     func setupUI() {
         
+        // init Album Art ImageView
         albumArtImageView = UIImageView()
         self.view.addSubview(albumArtImageView)
         albumArtImageView.snp.makeConstraints { (make) in
@@ -87,20 +83,20 @@ class ViewController: UIViewController {
         }
         albumArtImageView.contentMode = .scaleAspectFill
         
-        
+        // init MusicNameLabel
         nameLabel = MarqueeLabel(frame: CGRect(x: 20, y: kHeight/1.558, width: 300, height: 40), duration: 20.0, fadeLength: 2.0)
         self.view.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(kHeight/1.558)
             make.height.equalTo(40)
             make.width.equalTo(300)
-            make.left.equalTo(20)//kWidth/13.75)
+            make.left.equalTo(20)
         }
         nameLabel.font = UIFont.init(name: "Futura-Medium", size: 29)
         nameLabel.textColor = #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1)
         nameLabel.textAlignment = .left
        
-        
+        // init MusicianLabel
         musicianLabel = MarqueeLabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0), duration: 15, fadeLength: 10)
         self.view.addSubview(musicianLabel)
         musicianLabel.snp.makeConstraints { (make) in
@@ -113,7 +109,7 @@ class ViewController: UIViewController {
         musicianLabel.textColor = #colorLiteral(red: 0.6352941176, green: 0.6784313725, blue: 0.6745098039, alpha: 1)
         musicianLabel.textAlignment = .left
         
-        
+        // init MinTimeLable
         minTimeLabel = UILabel()
         self.view.addSubview(minTimeLabel)
         minTimeLabel.snp.makeConstraints { (make) in
@@ -127,7 +123,7 @@ class ViewController: UIViewController {
         minTimeLabel.textAlignment = .left
         minTimeLabel.textColor = #colorLiteral(red: 0.7006940842, green: 0.7304025292, blue: 0.7297720313, alpha: 1)
         
-        
+        // init MaxTimeLabel
         MaxTImeLabel = UILabel()
         self.view.addSubview(MaxTImeLabel)
         MaxTImeLabel.snp.makeConstraints { (make) in
@@ -141,24 +137,18 @@ class ViewController: UIViewController {
         MaxTImeLabel.textAlignment = .left
         MaxTImeLabel.textColor = #colorLiteral(red: 0.7006940842, green: 0.7304025292, blue: 0.7297720313, alpha: 1)
         
-        
+        // init PlayButton
         playButton = UIButton(type: .custom)
         self.view.addSubview(playButton)
         playButton.snp.makeConstraints { (make) in
             make.width.height.equalTo(60)
             make.centerX.equalToSuperview()
-            if kHeight == 568 {
-                make.bottom.equalTo(-20)
-            } else {
-                
-                make.bottom.equalTo(-20)
-            }
+            make.bottom.equalTo(-20)
         }
         playButton.setImage(UIImage(named: "play"), for: UIControlState.normal)
         playButton.addTarget(self, action: #selector(playButtonDidPress), for: .touchUpInside)
         
-        
-        
+        // init Slider
         slider = MarkSlider()
         self.view.addSubview(slider)
         slider.snp.makeConstraints { (slider) in
@@ -172,7 +162,7 @@ class ViewController: UIViewController {
         slider.leftBarColor = #colorLiteral(red: 0.01444105245, green: 0.630010426, blue: 0.9139389396, alpha: 1)
         slider.rightBarColor = #colorLiteral(red: 0.6705882353, green: 0.6980392157, blue: 0.6784313725, alpha: 1)
         
-        
+        // init LastButton
         lastButton = UIButton(type: .custom)
         self.view.addSubview(lastButton)
         lastButton.snp.makeConstraints { (make) in
@@ -188,7 +178,7 @@ class ViewController: UIViewController {
         lastButton.setImage(UIImage(named: "last"), for: .normal)
         lastButton.addTarget(self, action: #selector(lastButtonDidTauch), for: .touchUpInside)
         
-        
+        // init NextButton
         nextButton = UIButton(type: .custom)
         self.view.addSubview(nextButton)
         nextButton.snp.makeConstraints { (make) in
@@ -204,7 +194,7 @@ class ViewController: UIViewController {
         nextButton.setImage(UIImage(named: "next"), for: .normal)
         nextButton.addTarget(self, action: #selector(nextButtonDidTauch), for: .touchUpInside)
         
-        
+        // init RandomButton
         randomButton = UIButton(type: .custom)
         self.view.addSubview(randomButton)
         randomButton.snp.makeConstraints { (make) in
@@ -216,24 +206,19 @@ class ViewController: UIViewController {
         randomButton.setImage(UIImage(named: "unrandom"), for: .normal)
         randomButton.addTarget(self, action: #selector(randomButtonDidTouch), for: .touchUpInside)
         
-        
+        // init Like Button
         likeButton = UIButton(type: .custom)
         self.view.addSubview(likeButton)
         likeButton.snp.makeConstraints { (make) in
             make.width.height.equalTo(25)
             make.centerY.equalTo(playButton.snp_centerY)
             make.centerX.equalTo(MaxTImeLabel.snp_centerX)
-//            if kHeight == 568 {
-//                make.right.equalTo(-20)
-//            } else {
-//                make.right.equalTo(-30)
-//            }
         }
         likeButton.setImage(UIImage(named: "unlike"), for: .normal)
         likeButton.setImage(UIImage(named: "unlike"), for: .highlighted)
         likeButton.addTarget(self, action: #selector(likeButtonDidPress), for: .touchUpInside)
         
-        
+        // init ListButton
         listButton = UIButton(type: .custom)
         self.view.addSubview(listButton)
         listButton.snp.makeConstraints { (make) in
@@ -276,7 +261,7 @@ class ViewController: UIViewController {
                 }
                 self.minTimeLabel.text = minDisplay
                 
-                // 设置生育播放时长label文字
+                // 设置剩余播放时长label文字
                 let durationTime: Int = Int(CMTimeGetSeconds(self.playerItem.duration))
                 let time = durationTime - minTime
                 let maxTime: Int = Int(time)
@@ -316,6 +301,12 @@ class ViewController: UIViewController {
                 musicianLabel.text = item.stringValue
             }
         }
+    }
+    
+    
+    @objc func finishedPlaying(notification: Notification) {
+        print("finish")
+        nextButtonDidTauch()
     }
     
     @objc func nextButtonDidTauch() {

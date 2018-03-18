@@ -60,6 +60,7 @@
 		1D84BF5E1FE0355E008E5A9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D84BF6A1FE03C7D008E5A9F /* Lorde.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Lorde.mp3; sourceTree = "<group>"; };
 		1D91A4291FE22E37007DAFC7 /* Pray to God.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Pray to God.mp3"; sourceTree = "<group>"; };
+		1DD5E478205E25C800E9C25C /* LocalMusicPlayer.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LocalMusicPlayer.gif; sourceTree = "<group>"; };
 		1DD9E82F1FE23530005BBF19 /* Ella Vos - Rearrange.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ella Vos - Rearrange.mp3"; sourceTree = "<group>"; };
 		1DD9E8331FE251F0005BBF19 /* Maroon 5 - It Was Always You.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Maroon 5 - It Was Always You.mp3"; sourceTree = "<group>"; };
 		1DD9E8351FE2529B005BBF19 /* Ed Sheeran - Runaway.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ed Sheeran - Runaway.mp3"; sourceTree = "<group>"; };
@@ -146,6 +147,7 @@
 				1D84BF431FE0355E008E5A9F /* Assets.xcassets */,
 				1D84BF451FE0355E008E5A9F /* LaunchScreen.storyboard */,
 				1D84BF481FE0355E008E5A9F /* Info.plist */,
+				1DD5E478205E25C800E9C25C /* LocalMusicPlayer.gif */,
 			);
 			path = MusicPlayer;
 			sourceTree = "<group>";
